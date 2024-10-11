@@ -49,6 +49,13 @@ router.post(
     } = req.body;
 
     try {
+      const existingEmployee = await Employee.findOne({ email });
+      if (existingEmployee) {
+        return res.status(400).json({
+          message: "Email already exists!",
+        });
+      }
+
       const newEmployee = new Employee({
         first_name,
         last_name,
