@@ -2,12 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/userRoutes");
 const employeeRouter = require("./routes/employeeRoutes");
+const cors = require("cors");
+
 const seedData = require("./seedData");
 require("dotenv").config();
 const SERVER_PORT = 3000;
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // MongoDB connection string
 const mongoURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.2hfg7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;

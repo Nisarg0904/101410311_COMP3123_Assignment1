@@ -52,6 +52,7 @@ router.post(
     }
   }
 );
+const jwt = require("jsonwebtoken");
 
 // POST /api/v1/user/login
 router.post(
@@ -88,8 +89,18 @@ router.post(
         return res.status(401).json({ message: "Incorrect password!" });
       }
 
+      // Generate JWT token
+      const token = jwt.sign(
+        { id: user._id, email: user.email, username: user.username },
+        process.env.JWT_SECRET, // Use an environment variable for security
+        { expiresIn: "1h" } // Token valid for 1 hour
+      );
+
+      // Include the token and username in the response
       return res.status(200).json({
         message: "Login successful.",
+        username: user.username,
+        token, // Return the token
       });
     } catch (error) {
       console.error(error);

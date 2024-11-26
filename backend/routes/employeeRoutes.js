@@ -80,15 +80,17 @@ router.post(
 );
 
 // GET /api/v1/emp/employees
-router.get("/employees", async (req, res) => {
+const authenticateToken = require("../middleware/auth");
+
+router.get("/employees", authenticateToken, async (req, res) => {
   try {
     const employees = await Employee.find();
     res.status(200).json(employees);
   } catch (error) {
-    console.error("Error fetching employees:", error);
     res.status(500).json({ message: "Server error!" });
   }
 });
+
 
 // GET /api/v1/emp/employees/:id
 router.get(
