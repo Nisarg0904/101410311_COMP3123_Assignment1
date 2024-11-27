@@ -1,3 +1,4 @@
+/* Employee List Container */
 .employee-list-container {
   max-width: 900px;
   margin: 50px auto;
@@ -5,12 +6,79 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  text-align: center;
+  position: relative;
 }
 
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #28a745; /* Green background */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px 10px 0 0;
+}
+
+header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+header button {
+  padding: 10px 20px;
+  background: #dc3545; /* Red */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+header button:hover {
+  background: #b52d3a;
+}
+
+header .logout-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Search Bar Styling */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.search-bar input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 250px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #218838;
+}
+
+/* Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
+  margin-top: 20px;
   font-size: 16px;
 }
 
@@ -22,30 +90,110 @@ table td {
 }
 
 table th {
-  background: #007bff;
+  background: #28a745; /* Green header */
   color: white;
   text-transform: uppercase;
 }
 
+table tr:nth-child(odd) {
+  background: #f9f9f9; /* Light background */
+}
+
 table tr:nth-child(even) {
-  background: #f9f9f9;
+  background: #ffffff; /* White background */
 }
 
 table tr:hover {
-  background: #f1f1f1;
+  background: #f1f1f1; /* Highlight on hover */
 }
 
+/* Action Buttons */
 button {
-  padding: 6px 12px;
+  padding: 6px;
   margin: 0 5px;
   font-size: 14px;
-  background: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
+button.view {
+  background: #28a745; /* Green */
+}
+
+button.update {
+  background: #ffc107; /* Yellow */
+}
+
+button.delete {
+  background: #dc3545; /* Red */
+}
+
 button:hover {
-  background: #0056b3;
+  opacity: 0.9;
+}
+
+/* Legend Box Styling */
+.legend-box {
+  position: absolute;
+  top: 20px;
+  right: -220px; /* Move it further right */
+  width: 200px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.legend-box h4 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.legend-color.view {
+  background: #28a745; /* Green */
+}
+
+.legend-color.update {
+  background: #ffc107; /* Yellow */
+}
+
+.legend-color.delete {
+  background: #dc3545; /* Red */
+}
+
+/* Logout Button at Bottom */
+.logout-container {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.logout-container button {
+  padding: 10px 20px;
+  background: #dc3545; /* Red */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-container button:hover {
+  background: #b52d3a;
 }

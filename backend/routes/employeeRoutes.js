@@ -90,7 +90,27 @@ router.get("/employees", authenticateToken, async (req, res) => {
     res.status(500).json({ message: "Server error!" });
   }
 });
+// GET /api/v1/emp/employees/search
+router.get("/employees/search", async (req, res) => {
+  const { department, position } = req.query;
 
+  try {
+    // Build a dynamic filter object
+    const filter = {};
+    if (department) {
+      filter.department = { $regex: department, $options: "i" }; // Case-insensitive search
+    }
+    if (position) {
+      filter.position = { $regex: position, $options: "i" }; // Case-insensitive search
+    }
+
+    const employees = await Employee.find(filter);
+    res.status(200).json(employees);
+  } catch (error) {
+    console.error("Error searching employees:", error);
+    res.status(500).json({ message: "Server error!" });
+  }
+});
 
 // GET /api/v1/emp/employees/:id
 router.get(
